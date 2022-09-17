@@ -3,7 +3,7 @@ var csrf = new XMLHttpRequest();
   csrf.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       const parser = new DOMParser();
-      const htmlDocument = parser.parseFromString(this.responseText, "text/html");
+      const htmlDocument = parser.parseFromString(this.responseText);
       const token = htmlDocument.getElementById("_wpnonce_create-user").value;
       alert(token)
     }
